@@ -46,7 +46,6 @@ function addProductToCart(product, quantity) {
     return;
   }
   
-  /*
   if (existingLine) {
 
     const currentQuantity = parseInt(existingLine.dataset.quantity, 10);
@@ -63,10 +62,8 @@ function addProductToCart(product, quantity) {
     const cartLine = createCartLine(product, quantity);
     cartTableBodyElement.appendChild(cartLine);
   }
-  */
 
-  const cartLine = createCartLine(product, quantity);
-  cartTableBodyElement.appendChild(cartLine);
+
   showCartContent(true);
 
   updateTotalPrice();
@@ -93,11 +90,23 @@ function submitHandler(event) {
   // TODO hér þarf að finna fjölda sem á að bæta við körfu með því að athuga
   const quantityInputElement = parent.querySelector('input');
 
+
+
   // á input
   const quantity = Number.parseInt(quantityInputElement.value);
 
+  
+
+
   // Bætum vöru í körfu (hér væri gott að bæta við athugun á því að varan sé til)
   addProductToCart(product, quantity);
+  let element = document.getElementsByClassName("foo");
+  element.innerText = 1 * quantity;
+
+  // updateað verð sem samtals talan
+  element.textContent = `${element} kr.-`;
+
+  updateAmount();
   updateTotalPrice();
 }
 
@@ -163,6 +172,9 @@ function updateTotalPrice() {
   totalPriceElement.textContent = `${totalSum} kr.-`;
 }
 updateTotalPrice();
+
+
+  
 
 
 
